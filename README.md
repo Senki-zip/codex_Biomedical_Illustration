@@ -35,6 +35,29 @@ codex plugin add bio-mechanism@biomedical-illustration
 
 本仓库直接包含素材文件，原始素材体积约 449 MB；首次安装需要下载它们。插件与技能入口分别位于 `plugins/bio-mechanism/plugin.json` 和 `plugins/bio-mechanism/skills/bio-mechanism/SKILL.md`。
 
+## Skills 使用方法
+
+插件内包含两个可调用的 skills：
+
+| Skill | 用途 | 示例 |
+| --- | --- | --- |
+| [`bio-mechanism-guide`](plugins/bio-mechanism/skills/bio-mechanism-guide/SKILL.md) | 使用指南、素材库检查和首次使用引导 | `使用 $bio-mechanism-guide，教我用这个插件画机制图。` |
+| [`bio-mechanism`](plugins/bio-mechanism/skills/bio-mechanism/SKILL.md) | 检索、预览、导出素材和组装机制图 | `使用 $bio-mechanism，找到 DNA、细胞核和蛋白素材，并生成候选图册。` |
+
+在 Codex 中输入 `$` 可查找已加载的 skill，也可以直接描述任务，由 Codex 自动选择。使用指南同时作为插件的 onboarding skill；支持该入口的客户端可在插件安装后的设置／开始使用入口中调用它。
+
+常用提示语：
+
+```text
+使用 $bio-mechanism-guide，检查素材库并介绍操作方法。
+
+使用 $bio-mechanism，找 6 个 CC0 的细胞和核酸图标，导出 SVG、来源及署名文件，供我上传到 BioRender。
+
+使用 $bio-mechanism，绘制以下机制：A 激活 B，B 抑制 C，B 到 D 为待验证关系。提供可编辑 SVG、PNG 预览和素材署名。
+```
+
+绘图时提供核心分子、所在细胞／细胞器、激活或抑制关系、待验证关系及版式要求，有助于准确选择素材和安排布局。
+
 ## 命令行使用
 
 从克隆的仓库根目录执行：

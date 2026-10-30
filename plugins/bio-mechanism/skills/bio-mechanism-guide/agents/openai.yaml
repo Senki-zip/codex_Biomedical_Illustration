@@ -1,0 +1,6 @@
+interface:
+  display_name: "科研机制图使用指南"
+  short_description: "Learn to find science SVGs and build mechanism diagrams"
+  default_prompt: "使用 $bio-mechanism-guide 检查素材库，并教我检索素材、导入 BioRender 和绘制第一张机制图。"
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,202 @@
+{
+  "plugin_id": "bio-mechanism@biomedical-illustration",
+  "version": "1.0.0",
+  "snapshot": {
+    "source": "https://github.com/duerrsimon/bioicons",
+    "commit": "d29e766ea7580b8063c4f47b29e872db40a4d979",
+    "download_date": "2026-10-30",
+    "assets": 2829,
+    "upstream_web_index_rows": 2804,
+    "bytes": 448518446,
+    "licenses": {
+      "bsd": 3,
+      "cc-0": 488,
+      "cc-by-3.0": 1376,
+      "cc-by-4.0": 884,
+      "cc-by-sa-3.0": 4,
+      "cc-by-sa-4.0": 35,
+      "mit": 39
+    },
+    "categories": {
+      "Machine_Learning": 31,
+      "Amino-Acids": 68,
+      "Animals": 384,
+      "Blood_Immunology": 205,
+      "Cell_culture": 53,
+      "Cell_lines": 9,
+      "Cell_membrane": 90,
+      "Cell_types": 28,
+      "Chemistry": 92,
+      "Chemo-_and_Bioinformatics": 25,
+      "Computer_hardware": 12,
+      "Epigenetics": 2,
+      "Extracellular_matrix": 2,
+      "General_items": 179,
+      "Genetics": 86,
+      "Genomics": 6,
+      "Human_physiology": 460,
+      "Imaging": 21,
+      "Intracellular_components": 120,
+      "Lab_apparatus": 167,
+      "Microbiology": 155,
+      "Molecular_modelling": 17,
+      "Nanotechnology": 4,
+      "Nucleic_acids": 96,
+      "People-Other": 29,
+      "Peptides": 3,
+      "Plants_Algae": 96,
+      "Receptors_channels": 66,
+      "Safety_symbols": 43,
+      "Scientific_graphs": 59,
+      "Tissues": 56,
+      "Viruses": 24,
+      "Oncology": 37,
+      "Parasites": 72,
+      "Neuroscience": 1,
+      "Procedures": 30,
+      "Molecular_Biology": 1
+    },
+    "archive_sha256": "b67a5d01acb6831275a3882a588fcea203af904c1b5e352544b62d9066c98f6e",
+    "svg_parse_errors": [
+      {
+        "path": "cc-by-4.0/Human_physiology/DBCLS/Anterior_view_of_ligaments_of_pelvis.svg",
+        "error": "junk after document element: line 3993, column 0"
+      },
+      {
+        "path": "cc-by-4.0/Viruses/DBCLS/Polyomaviridae.svg",
+        "error": "no element found: line 1, column 0"
+      },
+      {
+        "path": "cc-by-4.0/Viruses/DBCLS/SARS-CoV-2.svg",
+        "error": "no element found: line 1, column 0"
+      },
+      {
+        "path": "cc-by-4.0/Viruses/DBCLS/virus.svg",
+        "error": "no element found: line 1, column 0"
+      }
+    ],
+    "unindexed_files": [
+      {
+        "path": "cc-by-4.0/General_items/scientific-article.svg",
+        "error": "Unexpected icon path; not indexed",
+        "reason": "Author directory missing; provenance unresolved"
+      }
+    ]
+  },
+  "verification": {
+    "assets": 2829,
+    "svg_bytes": 448518446,
+    "licenses": {
+      "bsd": 3,
+      "cc-0": 488,
+      "cc-by-3.0": 1376,
+      "cc-by-4.0": 884,
+      "cc-by-sa-3.0": 4,
+      "cc-by-sa-4.0": 35,
+      "mit": 39
+    },
+    "categories": {
+      "Machine_Learning": 31,
+      "Amino-Acids": 68,
+      "Animals": 384,
+      "Blood_Immunology": 205,
+      "Cell_culture": 53,
+      "Cell_lines": 9,
+      "Cell_membrane": 90,
+      "Cell_types": 28,
+      "Chemistry": 92,
+      "Chemo-_and_Bioinformatics": 25,
+      "Computer_hardware": 12,
+      "Epigenetics": 2,
+      "Extracellular_matrix": 2,
+      "General_items": 179,
+      "Genetics": 86,
+      "Genomics": 6,
+      "Human_physiology": 460,
+      "Imaging": 21,
+      "Intracellular_components": 120,
+      "Lab_apparatus": 167,
+      "Microbiology": 155,
+      "Molecular_modelling": 17,
+      "Nanotechnology": 4,
+      "Nucleic_acids": 96,
+      "People-Other": 29,
+      "Peptides": 3,
+      "Plants_Algae": 96,
+      "Receptors_channels": 66,
+      "Safety_symbols": 43,
+      "Scientific_graphs": 59,
+      "Tissues": 56,
+      "Viruses": 24,
+      "Oncology": 37,
+      "Parasites": 72,
+      "Neuroscience": 1,
+      "Procedures": 30,
+      "Molecular_Biology": 1
+    },
+    "sources": [
+      {
+        "name": "BioIcons",
+        "status": "downloaded",
+        "commit": "d29e766ea7580b8063c4f47b29e872db40a4d979",
+        "indexed_assets": 2829,
+        "usable_svg": 2825,
+        "original_svg_files": 2830,
+        "website": "https://bioicons.com/",
+        "repository": "https://github.com/duerrsimon/bioicons",
+        "download_date": "2026-10-30",
+        "contains_authors": [
+          "Servier",
+          "DBCLS",
+          "other contributors"
+        ],
+        "note": "Per-icon license preserved; four malformed upstream SVGs quarantined; one source SVG lacks author directory and is retained but not indexed."
+      },
+      {
+        "name": "Servier Medical Art",
+        "status": "included_via_bioicons",
+        "website": "https://smart.servier.com/",
+        "bulk_download_status": "not_completed_slow_transfer",
+        "bulk_url": "https://smart.servier.com/wp-content/uploads/ServierMedicalArt-all-kits.zip",
+        "note": "Servier SVGs are already included in BioIcons under their snapshot licenses. The optional full PowerPoint archive is not installed."
+      },
+      {
+        "name": "Reactome Icon Library",
+        "status": "reference_only",
+        "website": "https://reactome.org/icon-lib",
+        "bulk_download_status": "HTTP 404",
+        "bulk_url": "https://reactome.org/icon/icon-lib-svg.tgz",
+        "note": "No Reactome artwork installed in this version."
+      },
+      {
+        "name": "NIH BioArt Source",
+        "status": "reference_only",
+        "website": "https://bioart.niaid.nih.gov/",
+        "license_reference": "https://bioart.niaid.nih.gov/faqs",
+        "note": "Per-entry Public Domain or specified license. No NIH BioArt artwork installed in this version."
+      }
+    ],
+    "verification_errors": [],
+    "verified": 2829,
+    "usable_svg": 2825,
+    "quarantined_upstream_svg": [
+      "bio-24616bcd5864",
+      "bio-f0e59fa16868",
+      "bio-79fc7e375530",
+      "bio-12c920657fe3"
+    ]
+  },
+  "functional_tests": {
+    "passed": true,
+    "checked": [
+      "Chinese search",
+      "CC0 filtering",
+      "export hashes",
+      "license notices",
+      "editable SVG",
+      "inhibition and binding edges",
+      "SVG ID uniqueness",
+      "invalid ID rejection"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "biomedical-illustration",
+  "interface": {
+    "displayName": "Biomedical Illustration 科研机制图"
+  },
+  "plugins": [
+    {
+      "name": "bio-mechanism",
+      "source": {
+        "source": "local",
+        "path": "./plugins/bio-mechanism"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Education & Research"
+    }
+  ]
+}

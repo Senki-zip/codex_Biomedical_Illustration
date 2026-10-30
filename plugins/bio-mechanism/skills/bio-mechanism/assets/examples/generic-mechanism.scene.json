@@ -1,0 +1,92 @@
+{
+  "width": 1400,
+  "height": 610,
+  "title": "Editable mechanism diagram — generic example",
+  "nodes": [
+    {
+      "id": "receptor",
+      "asset": "bio-94be01feee5b",
+      "x": 65,
+      "y": 165,
+      "width": 210,
+      "height": 210,
+      "label": "Receptor / ligand",
+      "note": "Generic open artwork"
+    },
+    {
+      "id": "signal",
+      "asset": "bio-1161c95976be",
+      "x": 405,
+      "y": 200,
+      "width": 155,
+      "height": 140,
+      "label": "Intracellular regulator"
+    },
+    {
+      "id": "dna",
+      "asset": "bio-6bf4a6c4e420",
+      "x": 735,
+      "y": 175,
+      "width": 190,
+      "height": 190,
+      "label": "DNA / transcription"
+    },
+    {
+      "id": "output",
+      "x": 1110,
+      "y": 230,
+      "width": 210,
+      "height": 90,
+      "fill": "#e0f2fe",
+      "stroke": "#7bb9d3",
+      "label": "Cellular response",
+      "label_position": "inside"
+    }
+  ],
+  "edges": [
+    {
+      "from": "receptor",
+      "to": "signal",
+      "kind": "activation",
+      "label": "signal",
+      "color": "#28788c"
+    },
+    {
+      "from": "signal",
+      "to": "dna",
+      "kind": "activation",
+      "label": "regulation",
+      "color": "#28788c"
+    },
+    {
+      "from": "dna",
+      "to": "output",
+      "kind": "activation",
+      "dashed": true,
+      "label": "proposed link",
+      "color": "#b67b26"
+    }
+  ],
+  "labels": [
+    {
+      "text": "Solid arrow: activation     Dashed arrow: proposed relationship",
+      "x": 65,
+      "y": 500,
+      "size": 18
+    },
+    {
+      "text": "Example only — no specific biological mechanism is asserted.",
+      "x": 65,
+      "y": 535,
+      "size": 17,
+      "color": "#64748b"
+    },
+    {
+      "text": "Artwork: Servier, via BioIcons, CC BY 3.0. Resized and composed; see accompanying attribution.",
+      "x": 65,
+      "y": 570,
+      "size": 15,
+      "color": "#64748b"
+    }
+  ]
+}

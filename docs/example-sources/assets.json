@@ -1,0 +1,50 @@
+[
+  {
+    "license": "cc-by-3.0",
+    "category": "Receptors_channels",
+    "author": "Servier",
+    "name": "transmembrane-receptor-ligand",
+    "id": "bio-94be01feee5b",
+    "source": "BioIcons",
+    "path": "bioicons/icons/cc-by-3.0/Receptors_channels/Servier/transmembrane-receptor-ligand.svg",
+    "author_url": "https://smart.servier.com/",
+    "license_url": "https://creativecommons.org/licenses/by/3.0/",
+    "license_path": "bioicons/icons/cc-by-3.0/LICENSE",
+    "source_url": "https://github.com/duerrsimon/bioicons/blob/d29e766ea7580b8063c4f47b29e872db40a4d979/static/icons/cc-by-3.0/Receptors_channels/Servier/transmembrane-receptor-ligand.svg",
+    "sha256": "af263eb2301c46bc9a46fdfbc3842ee8b70e8b7656b9f3636c5963c2682f4cc9",
+    "bytes": 170267,
+    "svg_valid": true
+  },
+  {
+    "license": "cc-by-3.0",
+    "category": "Intracellular_components",
+    "author": "Servier",
+    "name": "protein-7",
+    "id": "bio-1161c95976be",
+    "source": "BioIcons",
+    "path": "bioicons/icons/cc-by-3.0/Intracellular_components/Servier/protein-7.svg",
+    "author_url": "https://smart.servier.com/",
+    "license_url": "https://creativecommons.org/licenses/by/3.0/",
+    "license_path": "bioicons/icons/cc-by-3.0/LICENSE",
+    "source_url": "https://github.com/duerrsimon/bioicons/blob/d29e766ea7580b8063c4f47b29e872db40a4d979/static/icons/cc-by-3.0/Intracellular_components/Servier/protein-7.svg",
+    "sha256": "b367c50abb88309a0cafff7f37ecc4c6b701815d41bccddf4f62a764fe2bbf9e",
+    "bytes": 2035,
+    "svg_valid": true
+  },
+  {
+    "license": "cc-by-3.0",
+    "category": "Nucleic_acids",
+    "author": "Servier",
+    "name": "dna-4",
+    "id": "bio-6bf4a6c4e420",
+    "source": "BioIcons",
+    "path": "bioicons/icons/cc-by-3.0/Nucleic_acids/Servier/dna-4.svg",
+    "author_url": "https://smart.servier.com/",
+    "license_url": "https://creativecommons.org/licenses/by/3.0/",
+    "license_path": "bioicons/icons/cc-by-3.0/LICENSE",
+    "source_url": "https://github.com/duerrsimon/bioicons/blob/d29e766ea7580b8063c4f47b29e872db40a4d979/static/icons/cc-by-3.0/Nucleic_acids/Servier/dna-4.svg",
+    "sha256": "62723167198899fad670d60f0c3f5dd810581cd5e2df6536453f1fe79f21e3cc",
+    "bytes": 46441,
+    "svg_valid": true
+  }
+]

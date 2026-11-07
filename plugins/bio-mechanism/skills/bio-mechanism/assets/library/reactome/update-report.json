@@ -1,0 +1,10 @@
+{
+  "source": "Reactome",
+  "checked_at": "2026-11-07",
+  "expected": 2571,
+  "download_failures": [],
+  "indexed": 2571,
+  "parseable": 2571,
+  "unique_usable_total": 5393,
+  "duplicate_records": 3
+}

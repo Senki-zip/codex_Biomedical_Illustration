@@ -14,7 +14,8 @@
       "DBCLS",
       "other contributors"
     ],
-    "note": "Per-icon license preserved; four malformed upstream SVGs quarantined; one source SVG lacks author directory and is retained but not indexed."
+    "note": "Latest main checked against per-file Git blob hashes; existing IDs and per-artwork licenses preserved.",
+    "checked_at": "2026-11-07"
   },
   {
     "name": "Servier Medical Art",
@@ -26,11 +27,15 @@
   },
   {
     "name": "Reactome Icon Library",
-    "status": "reference_only",
+    "status": "downloaded",
     "website": "https://reactome.org/icon-lib",
-    "bulk_download_status": "HTTP 404",
+    "bulk_download_status": "public icon API used",
     "bulk_url": "https://reactome.org/icon/icon-lib-svg.tgz",
-    "note": "No Reactome artwork installed in this version."
+    "note": "Individual SVGs downloaded with original designer metadata; CC BY 4.0 and Reactome attribution preserved.",
+    "checked_at": "2026-11-07",
+    "indexed_assets": 2571,
+    "expected_assets": 2571,
+    "download_failures": 0
   },
   {
     "name": "NIH BioArt Source",

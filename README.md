@@ -33,7 +33,7 @@ codex plugin marketplace add ./codex_Biomedical_Illustration
 codex plugin add bio-mechanism@biomedical-illustration
 ```
 
-本仓库直接包含素材文件，原始素材体积约 449 MB；首次安装需要下载它们。插件与技能入口分别位于 `plugins/bio-mechanism/plugin.json` 和 `plugins/bio-mechanism/skills/bio-mechanism/SKILL.md`。
+本仓库直接包含素材文件，原始已索引 SVG 合计约 481.5 MB；首次安装需要下载它们。插件与技能入口分别位于 `plugins/bio-mechanism/plugin.json` 和 `plugins/bio-mechanism/skills/bio-mechanism/SKILL.md`。
 
 ## Skills 使用方法
 
@@ -90,17 +90,45 @@ node "$BIO_SKILL_DIR/scripts/render.cjs" ./mechanism.svg ./mechanism.png 1800
 
 ## 素材范围与质量
 
-素材来自 [BioIcons](https://github.com/duerrsimon/bioicons)，固定于提交 `d29e766ea7580b8063c4f47b29e872db40a4d979`，包含 Servier、DBCLS 和其他作者的作品。
+素材来自 [BioIcons](https://github.com/duerrsimon/bioicons) 和 [Reactome Icon Library](https://reactome.org/icon-lib)。2026-11-07 已检查 BioIcons 最新 main，仍为提交 `d29e766ea7580b8063c4f47b29e872db40a4d979`，无需重复下载；新增导入 Reactome 完整目录的 2,571 个 SVG，保留每个图标的设计者和来源记录。BioIcons 包含 Servier、DBCLS 和其他作者的作品。
 
 | 项目 | 数量 |
 | --- | ---: |
-| 保留的原始 SVG 文件 | 2,830 |
-| 已索引素材 | 2,829 |
-| 默认可检索和组图的 SVG | 2,825 |
+| 保留的原始 SVG 文件 | 5,401 |
+| 已索引素材 | 5,400 |
+| 默认可检索的去重 SVG | 5,393 |
+| 内容相同的重复记录，保留 ID 和来源 | 3 |
 | 上游损坏 SVG，保留但排除使用 | 4 |
 | 缺少作者目录，未索引的 SVG | 1 |
 
-索引按实际文件构建；每个素材记录作者、许可、来源 URL 和 SHA-256。校验与功能测试记录见 [validation.json](docs/validation.json)。本仓库未包含 NIH BioArt 或 Reactome 的完整素材库，详细状态见 [sources.json](plugins/bio-mechanism/skills/bio-mechanism/assets/library/sources.json)。
+索引按实际文件构建；每个素材记录作者、许可、来源 URL 和 SHA-256。校验与功能测试记录见 [validation.json](docs/validation.json)。本仓库包含 Reactome 全部 2,571 个目录图标；NIH BioArt 仍为参考来源，未安装其素材。详细状态见 [sources.json](plugins/bio-mechanism/skills/bio-mechanism/assets/library/sources.json)。
+
+## 更新和扩充素材库
+
+`1.1.0` 支持多来源更新、按来源检索、内容去重和独立许可文件保留。
+
+```bash
+BIO_SKILL_DIR="./plugins/bio-mechanism/skills/bio-mechanism"
+
+# 检查 BioIcons 最新版本，按 Git 哈希只下载变化文件
+python3 "$BIO_SKILL_DIR/scripts/sync_library.py" bioicons
+
+# 导入 Reactome 全部目录，复用已经下载的文件；中断后可重新运行
+python3 "$BIO_SKILL_DIR/scripts/sync_library.py" reactome --workers 4
+
+# 需要重新获取现有 Reactome 图稿时，加 --refresh
+python3 "$BIO_SKILL_DIR/scripts/sync_library.py" reactome --refresh --workers 4
+
+# 按来源检索、查看统计并检查完整性
+python3 "$BIO_SKILL_DIR/scripts/bioassets.py" search '蛋白 受体' --source Reactome --limit 12
+python3 "$BIO_SKILL_DIR/scripts/bioassets.py" stats --verify
+```
+
+普通使用不需要联网。更新命令会访问相应公共来源；可选的 `requests` 包用于加快连接复用，没有它时使用 Python 标准库下载。不要同时运行两个命令修改同一素材库。
+
+去重按原文件 SHA-256 执行，仅合并字节完全相同的图标；重复 ID 仍可导出自己的来源和许可。更新一种来源会保留其他来源。Reactome 下载覆盖完整性和失败条目均有记录，失败下载不会计为已安装。
+
+本次扩充的核验与示例见 [扩充记录](docs/library-update-2026-11-07.md) 和 [新增素材预览](docs/reactome-preview.png)。
 
 ## 用于 BioRender
 
@@ -118,5 +146,6 @@ Servier 在本 BioIcons 快照中的部分素材为 CC BY 3.0；不会因为官�
 
 - [BioIcons](https://bioicons.com/)
 - [Servier Medical Art](https://smart.servier.com/)
+- [Reactome Icon Library](https://reactome.org/icon-lib)
 - [DBCLS TogoTV](https://togotv.dbcls.jp/en/pics.html)
 - [Codex 插件打包说明](https://developers.openai.com/plugins/build/plugins)

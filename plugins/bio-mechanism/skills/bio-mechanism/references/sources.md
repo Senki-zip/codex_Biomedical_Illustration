@@ -16,6 +16,14 @@ The library includes many Servier and DBCLS illustrations. Preserve their snapsh
 
 - Servier official PowerPoint kits: https://smart.servier.com/image-kits-by-category/ — current CC BY 4.0. If a kit archive is present under `assets/library/servier/`, `sources.json` records its actual download status and hash. These archives are supplementary source documents, not separately indexed SVGs.
 - NIH BioArt: https://bioart.niaid.nih.gov/ — per-entry Public Domain or stated license, https://bioart.niaid.nih.gov/faqs . No blanket relicensing or claim that all entries are public domain.
-- Reactome Icon Library: https://reactome.org/icon-lib — CC BY 4.0 on the library page. A failed bulk download is recorded in `sources.json`; do not claim these assets are offline unless they have actually been downloaded.
+- Reactome Icon Library: https://reactome.org/icon-lib — CC BY 4.0 on the library page. The library is imported through its public icon search catalog and individual SVG download URLs rather than relying on the unavailable bulk archive. Original designer names, designer URLs, icon IDs, descriptions and full upstream catalog are preserved under `assets/library/reactome/`. Retain the additional Reactome publisher attribution to CSHL, OICR and EMBL-EBI, including the exported `NOTICE` file. `sources.json` and `reactome/update-report.json` record actual downloaded counts and any failures.
+
+## Updates and deduplication
+
+`scripts/sync_library.py bioicons` checks the latest main commit and compares per-file Git hashes before downloading changes. The pinned source URL in each resulting entry records the actual commit. See `bioicons/update-report.json` for the latest check; `snapshot.json` retains the initial archive import record.
+
+`scripts/sync_library.py reactome` uses the complete icon catalog and caches downloaded SVGs. `--refresh` fetches existing artwork again. The tool validates complete catalog coverage before merging, records download failures, and retains other libraries when updating one source. The legacy archive importer also preserves other source records.
+
+The merged `index.json` retains all source IDs. Exact SHA-256 duplicates have `duplicate_of` pointing to the canonical ID and are excluded from ordinary search totals; they remain exportable with their individual license and attribution. This is byte-level deduplication, not a claim that visually similar artwork is identical. Source catalogs are also saved under `assets/library/catalogs/`.
 
 Local commands need no account, API key, subscription, or paid generation service. External source lookup and downloading additional artwork require internet access. These are original open artwork libraries, not BioRender's proprietary icon library.

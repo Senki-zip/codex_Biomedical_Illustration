@@ -53,7 +53,7 @@ def norm(s):
     return re.sub(r'[_\-]+', ' ', s).casefold()
 
 
-def find(query, items, limit=20, category=None, license=None, author=None):
+def find(query, items, limit=20, category=None, license=None, author=None, source=None):
     # Alias groups are alternatives. Separate user concepts contribute separate scores.
     remaining, groups = query, []
     for zh in sorted(ALIASES, key=len, reverse=True):
@@ -63,7 +63,9 @@ def find(query, items, limit=20, category=None, license=None, author=None):
     groups.extend([norm(x)] for x in re.findall(r'[\w]+', remaining) if x.strip())
     ranked = []
     for item in items:
-        if not item.get('svg_valid', True):
+        if not item.get('svg_valid', True) or item.get('duplicate_of'):
+            continue
+        if source and norm(source) != norm(item['source']):
             continue
         if category and norm(category) not in norm(item['category']):
             continue
@@ -72,7 +74,7 @@ def find(query, items, limit=20, category=None, license=None, author=None):
         if author and norm(author) not in norm(item['author']):
             continue
         name = norm(item['name'])
-        hay = norm(' '.join(str(item[k]) for k in ('name', 'category', 'author')))
+        hay = norm(' '.join(str(item.get(k, '')) for k in ('name', 'category', 'author', 'description')))
         hits = sum(any(term in hay for term in group) for group in groups)
         if groups and not hits:
             continue
@@ -105,10 +107,20 @@ def attribution(items, out, modification='Original artwork copied without change
             f"- **{item['name']}** — {item['author']} ({item.get('author_url', '')}); "
             f"[{item['license']}]({item['license_url']}); [source]({item['source_url']}). ID: `{item['id']}`.",
         ])
+        if item.get('publisher'):
+            lines.append('  Publisher attribution: ' + item['publisher'] + '.')
         license_src = LIB / item['license_path']
         license_dst = out / 'licenses' / (item['license'] + '.txt')
+        if license_dst.exists() and license_dst.read_bytes() != license_src.read_bytes():
+            digest = hashlib.sha256(license_src.read_bytes()).hexdigest()[:12]
+            license_dst = out / 'licenses' / (item['license'] + '-' + digest + '.txt')
         license_dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(license_src, license_dst)
+        for notice in item.get('notice_paths', []):
+            notice_src = LIB / notice
+            digest = hashlib.sha256(notice_src.read_bytes()).hexdigest()[:12]
+            notice_dst = out / 'licenses' / ('NOTICE-' + digest + notice_src.suffix)
+            shutil.copyfile(notice_src, notice_dst)
     (out / 'ATTRIBUTION.md').write_text('\n'.join(lines) + '\n')
     write_json(out / 'assets.json', items)
 
@@ -139,8 +151,6 @@ def elem(tag, attrs=None, text=None):
 
 def safe_embed(item, node, prefix):
     raw = asset_path(item).read_bytes()
-    if b'<!ENTITY' in raw.upper():
-        raise ValueError('Entity declarations are not supported in embedded artwork')
     root = ET.fromstring(raw)
     # Source artwork is data: remove active nodes and prevent remote file requests.
     for parent in root.iter():
@@ -293,7 +303,7 @@ def main():
     sub = p.add_subparsers(dest='command', required=True)
     s = sub.add_parser('stats'); s.add_argument('--verify', action='store_true')
     s = sub.add_parser('search'); s.add_argument('query', nargs='?', default='')
-    s.add_argument('--limit', type=int, default=20); s.add_argument('--category'); s.add_argument('--license'); s.add_argument('--author')
+    s.add_argument('--limit', type=int, default=20); s.add_argument('--category'); s.add_argument('--license'); s.add_argument('--author'); s.add_argument('--source')
     s.add_argument('--json', action='store_true'); s.add_argument('--gallery', type=Path)
     s = sub.add_parser('export'); s.add_argument('ids', nargs='+'); s.add_argument('--out', required=True, type=Path)
     s = sub.add_parser('compose'); s.add_argument('--spec', required=True, type=Path); s.add_argument('--out', required=True, type=Path)
@@ -301,6 +311,12 @@ def main():
     items = load_index()
     if args.command == 'stats':
         result = {'assets': len(items), 'svg_bytes': sum(x['bytes'] for x in items),
+                  'usable_svg': sum(x.get('svg_valid', True) and not x.get('duplicate_of') for x in items),
+                  'parseable_svg': sum(x.get('svg_valid', True) for x in items),
+                  'duplicate_records': sum(bool(x.get('duplicate_of')) for x in items),
+                  'by_source': {source: {'indexed': sum(x['source'] == source for x in items),
+                                        'usable': sum(x['source'] == source and x.get('svg_valid', True) and not x.get('duplicate_of') for x in items)}
+                                for source in sorted(set(x['source'] for x in items))},
                   'licenses': dict(collections.Counter(x['license'] for x in items)),
                   'categories': dict(collections.Counter(x['category'] for x in items)),
                   'sources': json.loads((LIB / 'sources.json').read_text()) if (LIB / 'sources.json').exists() else []}
@@ -318,13 +334,12 @@ def main():
                     errors.append({'id': item['id'], 'error': str(ex)})
             result['verification_errors'] = errors
             result['verified'] = len(items) - len(errors)
-            result['usable_svg'] = len(items) - len(quarantined)
             result['quarantined_upstream_svg'] = quarantined
             print(json.dumps(result, ensure_ascii=False, indent=2))
             return int(bool(errors))
         print(json.dumps(result, ensure_ascii=False, indent=2))
     elif args.command == 'search':
-        matches = find(args.query, items, args.limit, args.category, args.license, args.author)
+        matches = find(args.query, items, args.limit, args.category, args.license, args.author, args.source)
         if args.gallery:
             gallery(matches, args.gallery)
         if args.json:

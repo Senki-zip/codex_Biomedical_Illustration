@@ -2,6 +2,7 @@
 """Import a pinned BioIcons source archive without executing upstream code."""
 import argparse
 import collections
+import datetime
 import hashlib
 import json
 import shutil
@@ -25,6 +26,8 @@ URLS = {
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('archive', type=Path)
+    p.add_argument('--commit', default=COMMIT, help='Pinned upstream commit for provenance links')
+    p.add_argument('--date', default=datetime.date.today().isoformat())
     p.add_argument('--library', type=Path, default=Path(__file__).resolve().parents[1] / 'assets/library')
     args = p.parse_args()
     dest = args.library / 'bioicons'
@@ -75,14 +78,25 @@ def main():
             'author_url': authors.get(row['author'], ''),
             'license_url': URLS[row['license']],
             'license_path': 'bioicons/icons/' + row['license'] + '/LICENSE',
-            'source_url': 'https://github.com/duerrsimon/bioicons/blob/' + COMMIT + '/static/icons/' + quote(str(rel)),
+            'source_url': 'https://github.com/duerrsimon/bioicons/blob/' + args.commit + '/static/icons/' + quote(str(rel)),
             'sha256': hashlib.sha256(raw).hexdigest(), 'bytes': len(raw), 'svg_valid': valid,
         })
         items.append(row)
-    (args.library / 'index.json').write_text(json.dumps(items, ensure_ascii=False, indent=2) + '\n')
+    index = args.library / 'index.json'
+    others = [x for x in json.loads(index.read_text()) if x['source'] != 'BioIcons'] if index.exists() else []
+    combined = sorted(items + others, key=lambda x: (x['source'] != 'BioIcons', x['source'], x['id']))
+    seen = {}
+    for item in combined:
+        item.pop('duplicate_of', None)
+        if item.get('svg_valid', True):
+            if item['sha256'] in seen:
+                item['duplicate_of'] = seen[item['sha256']]
+            else:
+                seen[item['sha256']] = item['id']
+    index.write_text(json.dumps(combined, ensure_ascii=False, indent=2) + '\n')
     report = {
-        'source': 'https://github.com/duerrsimon/bioicons', 'commit': COMMIT,
-        'download_date': '2026-10-30', 'assets': len(items), 'upstream_web_index_rows': len(data),
+        'source': 'https://github.com/duerrsimon/bioicons', 'commit': args.commit,
+        'download_date': args.date, 'assets': len(items), 'upstream_web_index_rows': len(data),
         'bytes': sum(x['bytes'] for x in items), 'licenses': dict(collections.Counter(x['license'] for x in items)),
         'categories': dict(collections.Counter(x['category'] for x in items)),
         'archive_sha256': hashlib.sha256(args.archive.read_bytes()).hexdigest(),

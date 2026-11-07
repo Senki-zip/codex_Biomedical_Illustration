@@ -1,0 +1,103 @@
+{
+  "width": 1440,
+  "height": 780,
+  "title": "Reactome — newly added vector artwork",
+  "nodes": [
+    {
+      "id": "sample-0",
+      "asset": "reactome-R-ICO-012629",
+      "x": 45,
+      "y": 95,
+      "width": 280,
+      "height": 175,
+      "label": "DNA",
+      "label_size": 18,
+      "note": "Cristoffer Sevilla"
+    },
+    {
+      "id": "sample-1",
+      "asset": "reactome-R-ICO-013311",
+      "x": 395,
+      "y": 95,
+      "width": 280,
+      "height": 175,
+      "label": "RNA",
+      "label_size": 18,
+      "note": "Cristoffer Sevilla"
+    },
+    {
+      "id": "sample-2",
+      "asset": "reactome-R-ICO-013284",
+      "x": 745,
+      "y": 95,
+      "width": 280,
+      "height": 175,
+      "label": "Receptor generic",
+      "label_size": 18,
+      "note": "Cristoffer Sevilla"
+    },
+    {
+      "id": "sample-3",
+      "asset": "reactome-R-ICO-013121",
+      "x": 1095,
+      "y": 95,
+      "width": 280,
+      "height": 175,
+      "label": "Nucleus",
+      "label_size": 18,
+      "note": "Cristoffer Sevilla"
+    },
+    {
+      "id": "sample-4",
+      "asset": "reactome-R-ICO-013020",
+      "x": 45,
+      "y": 405,
+      "width": 280,
+      "height": 175,
+      "label": "Mitochondrion",
+      "label_size": 18,
+      "note": "Cristoffer Sevilla"
+    },
+    {
+      "id": "sample-5",
+      "asset": "reactome-R-ICO-012425",
+      "x": 395,
+      "y": 405,
+      "width": 280,
+      "height": 175,
+      "label": "Antibody",
+      "label_size": 18,
+      "note": "Cristoffer Sevilla"
+    },
+    {
+      "id": "sample-6",
+      "asset": "reactome-R-ICO-012933",
+      "x": 745,
+      "y": 405,
+      "width": 280,
+      "height": 175,
+      "label": "KINASE",
+      "label_size": 18,
+      "note": "Cristoffer Sevilla"
+    },
+    {
+      "id": "sample-7",
+      "asset": "reactome-R-ICO-014831",
+      "x": 1095,
+      "y": 405,
+      "width": 280,
+      "height": 175,
+      "label": "Generic transporter",
+      "label_size": 18,
+      "note": "Cristoffer Sevilla"
+    }
+  ],
+  "labels": [
+    {
+      "text": "Artwork: Reactome / individual designers; CC BY 4.0. Publisher: CSHL, OICR, EMBL-EBI.",
+      "x": 45,
+      "y": 743,
+      "size": 16
+    }
+  ]
+}

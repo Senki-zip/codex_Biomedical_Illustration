@@ -1,0 +1,18 @@
+{
+  "source": "BioIcons",
+  "checked_at": "2026-11-07",
+  "commit": "d29e766ea7580b8063c4f47b29e872db40a4d979",
+  "upstream_commit_date": "2026-06-10T15:36:36Z",
+  "checked_blobs": 2846,
+  "downloaded_files": 0,
+  "unindexed_files": [
+    {
+      "path": "static/icons/cc-by-4.0/General_items/scientific-article.svg",
+      "reason": "Author directory missing"
+    }
+  ],
+  "indexed": 2829,
+  "parseable": 2825,
+  "unique_usable_total": 2822,
+  "duplicate_records": 3
+}

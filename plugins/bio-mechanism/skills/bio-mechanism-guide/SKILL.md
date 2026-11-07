@@ -44,6 +44,8 @@ python3 <draw-dir>/scripts/bioassets.py stats
 
 ## 常见问题
 
+- **扩充或更新素材库：** 按绘图技能的“Update downloaded sources”说明运行 `sync_library.py bioicons` 或 `sync_library.py reactome`，再检查统计和完整性。用 `--source BioIcons` 或 `--source Reactome` 筛选。可用数量按内容哈希去重，重复条目的 ID 和来源仍保留。
+
 - **安装后找不到 skill：** 新开对话；仍未出现时重启 Codex。可以使用 `codex plugin list` 检查已安装和启用状态，不主动删除或重装其他插件。
 - **查不到对象：** 尝试英文术语、同义词和更宽的分类；说明通用图标不能证明某一特定分子的身份。
 - **需要修改：** 通过场景 JSON 调整对象、标签和连线，重新生成 SVG；单个素材改色后保留原始来源并记录修改。

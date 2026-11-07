@@ -1,31 +1,29 @@
-# Biomedical Illustration · 科研机制图素材库
+# Biomedical Illustration
 
-本地 Codex 插件：下载即用的开放科研 SVG 素材库，支持中英文检索、素材预览、BioRender 导入素材包，以及可编辑的生物机制图组装。
+A local Codex plugin with an open scientific SVG library, English and Chinese search, asset previews, BioRender import bundles, and editable biological mechanism diagrams.
 
-![通用示例机制图](docs/example.png)
+![Generic mechanism example](docs/example.png)
 
-> 图为插件功能示例，不代表特定的生物学机制。
+The example demonstrates the plugin's illustration features.
 
-## 功能
+## Features
 
-- 离线检索细胞、细胞器、DNA、蛋白、受体和实验设备等素材。
-- 生成自包含 HTML 素材预览。
-- 导出原始 SVG、作者与来源记录、署名说明和适用的许可全文。
-- 按 JSON 场景组装可编辑 SVG，支持激活箭头、抑制端线、关联线和虚线。
-- 可选生成 PNG 预览。核心功能使用 Python 3.9+ 标准库，无需 API Key。
+- Search cells, organelles, DNA, proteins, receptors, and laboratory equipment offline.
+- Generate self-contained HTML galleries.
+- Export original SVGs with authors, source records, attribution, and applicable license texts.
+- Compose editable SVG scenes with activation arrows, inhibition bars, association lines, and dashed relationships.
+- Generate optional PNG previews. Core tools require Python 3.9+ and its standard library.
 
-## 安装到 Codex
+## Install in Codex
 
 ```bash
 codex plugin marketplace add Senki-zip/codex_Biomedical_Illustration
 codex plugin add bio-mechanism@biomedical-illustration
 ```
 
-安装后打开新对话；若技能未显示，重启 Codex。可以直接输入：
+Open a new conversation after installation. Restart Codex if the skills have not appeared. You can ask the plugin to find nucleus, DNA, and protein artwork, show candidate previews, and assemble an editable diagram from your mechanism description.
 
-> 使用科研机制图素材库，寻找细胞核、DNA 和蛋白的素材，先给我预览，再根据以下机制关系组装可编辑 SVG：……
-
-也可以先克隆仓库，再注册本地市场：
+You can also clone the repository and register its local marketplace.
 
 ```bash
 git clone https://github.com/Senki-zip/codex_Biomedical_Illustration.git
@@ -33,119 +31,119 @@ codex plugin marketplace add ./codex_Biomedical_Illustration
 codex plugin add bio-mechanism@biomedical-illustration
 ```
 
-本仓库直接包含素材文件，原始已索引 SVG 合计约 481.5 MB；首次安装需要下载它们。插件与技能入口分别位于 `plugins/bio-mechanism/plugin.json` 和 `plugins/bio-mechanism/skills/bio-mechanism/SKILL.md`。
+The repository includes approximately 481.5 MB of indexed original SVGs, which are downloaded during the first installation. The plugin manifest is `plugins/bio-mechanism/plugin.json`. The drawing skill is `plugins/bio-mechanism/skills/bio-mechanism/SKILL.md`.
 
-## Skills 使用方法
+## Use the skills
 
-插件内包含两个可调用的 skills：
+The plugin includes two callable skills.
 
-| Skill | 用途 | 示例 |
+| Skill | Purpose | Example prompt |
 | --- | --- | --- |
-| [`bio-mechanism-guide`](plugins/bio-mechanism/skills/bio-mechanism-guide/SKILL.md) | 使用指南、素材库检查和首次使用引导 | `使用 $bio-mechanism-guide，教我用这个插件画机制图。` |
-| [`bio-mechanism`](plugins/bio-mechanism/skills/bio-mechanism/SKILL.md) | 检索、预览、导出素材和组装机制图 | `使用 $bio-mechanism，找到 DNA、细胞核和蛋白素材，并生成候选图册。` |
+| [`bio-mechanism-guide`](plugins/bio-mechanism/skills/bio-mechanism-guide/SKILL.md) | Usage instructions, library checks, and onboarding | `Use $bio-mechanism-guide to teach me how to create a mechanism diagram.` |
+| [`bio-mechanism`](plugins/bio-mechanism/skills/bio-mechanism/SKILL.md) | Asset search, previews, exports, and diagram composition | `Use $bio-mechanism to find DNA, nucleus, and protein artwork and create a candidate gallery.` |
 
-在 Codex 中输入 `$` 可查找已加载的 skill，也可以直接描述任务，由 Codex 自动选择。使用指南同时作为插件的 onboarding skill；支持该入口的客户端可在插件安装后的设置／开始使用入口中调用它。
-
-常用提示语：
+Type `$` in Codex to find loaded skills, or describe your task in natural language for automatic selection. The guide is also the plugin's onboarding skill and can be opened from the setup entry point in supporting clients.
 
 ```text
-使用 $bio-mechanism-guide，检查素材库并介绍操作方法。
+Use $bio-mechanism-guide to check the local library and explain the workflow.
 
-使用 $bio-mechanism，找 6 个 CC0 的细胞和核酸图标，导出 SVG、来源及署名文件，供我上传到 BioRender。
+Use $bio-mechanism to find six CC0 cell and nucleic-acid icons and export the SVGs with source and attribution records for BioRender.
 
-使用 $bio-mechanism，绘制以下机制：A 激活 B，B 抑制 C，B 到 D 为待验证关系。提供可编辑 SVG、PNG 预览和素材署名。
+Use $bio-mechanism to draw this mechanism. A activates B, B inhibits C, and the relationship from B to D is proposed. Provide editable SVG, a PNG preview, and artwork attribution.
 ```
 
-绘图时提供核心分子、所在细胞／细胞器、激活或抑制关系、待验证关系及版式要求，有助于准确选择素材和安排布局。
+Include the main molecules, their cell or organelle locations, activation and inhibition relationships, proposed relationships, and layout preferences when requesting a diagram.
 
-## 命令行使用
+## Command-line usage
 
-从克隆的仓库根目录执行：
+Run these commands from the cloned repository root.
 
 ```bash
 BIO_SKILL_DIR="./plugins/bio-mechanism/skills/bio-mechanism"
 
-# 中英文检索、生成候选图册
-python3 "$BIO_SKILL_DIR/scripts/bioassets.py" search '细胞核 DNA 受体' --limit 16 --gallery ./candidates.html
+# Search and generate a candidate gallery
+python3 "$BIO_SKILL_DIR/scripts/bioassets.py" search 'nucleus DNA receptor' --limit 16 --gallery ./candidates.html
 
-# 限定作者或许可
+# Filter by author or license
 python3 "$BIO_SKILL_DIR/scripts/bioassets.py" search receptor --author Servier --limit 12
 python3 "$BIO_SKILL_DIR/scripts/bioassets.py" search DNA --license cc-0 --limit 12
 
-# 导出原始 SVG 与署名文件
+# Export original SVGs and attribution
 python3 "$BIO_SKILL_DIR/scripts/bioassets.py" export bio-94be01feee5b bio-1161c95976be --out ./materials
 
-# 生成可编辑 SVG 示例
+# Compose an editable SVG example
 python3 "$BIO_SKILL_DIR/scripts/bioassets.py" compose --spec "$BIO_SKILL_DIR/assets/examples/generic-mechanism.scene.json" --out ./mechanism.svg
 
-# 检查素材完整性
+# Verify asset integrity
 python3 "$BIO_SKILL_DIR/scripts/bioassets.py" stats --verify
 ```
 
-场景格式见 [scene-format.md](plugins/bio-mechanism/skills/bio-mechanism/references/scene-format.md)。PNG 预览脚本需要 Node.js 和可选的 `sharp`；支持从普通 Node 模块路径或本机 Codex 随附运行库加载：
+The scene schema is documented in [scene-format.md](plugins/bio-mechanism/skills/bio-mechanism/references/scene-format.md). PNG previews require Node.js and the optional `sharp` package, loaded through normal Node resolution or the bundled Codex runtime.
 
 ```bash
 node "$BIO_SKILL_DIR/scripts/render.cjs" ./mechanism.svg ./mechanism.png 1800
 ```
 
-## 素材范围与质量
+## Library coverage and quality
 
-素材来自 [BioIcons](https://github.com/duerrsimon/bioicons) 和 [Reactome Icon Library](https://reactome.org/icon-lib)。2026-11-07 已检查 BioIcons 最新 main，仍为提交 `d29e766ea7580b8063c4f47b29e872db40a4d979`，无需重复下载；新增导入 Reactome 完整目录的 2,571 个 SVG，保留每个图标的设计者和来源记录。BioIcons 包含 Servier、DBCLS 和其他作者的作品。
+Artwork comes from BioIcons and the Reactome Icon Library. The BioIcons main branch was checked on November 7, 2026 and still points to `d29e766ea7580b8063c4f47b29e872db40a4d979`. All 2,571 Reactome catalog SVGs were imported with designer and source metadata. BioIcons includes contributions from Servier, DBCLS, and other authors. [BioIcons](https://github.com/duerrsimon/bioicons), [Reactome](https://reactome.org/icon-lib)
 
-| 项目 | 数量 |
+| Measure | Count |
 | --- | ---: |
-| 保留的原始 SVG 文件 | 5,401 |
-| 已索引素材 | 5,400 |
-| 默认可检索的去重 SVG | 5,393 |
-| 内容相同的重复记录，保留 ID 和来源 | 3 |
-| 上游损坏 SVG，保留但排除使用 | 4 |
-| 缺少作者目录，未索引的 SVG | 1 |
+| Original SVG files retained | 5,401 |
+| Indexed asset records | 5,400 |
+| Unique SVGs available in ordinary search | 5,393 |
+| Byte-identical duplicate records with retained IDs and provenance | 3 |
+| Malformed upstream SVGs retained and excluded from use | 4 |
+| Unindexed SVG with a missing author directory | 1 |
 
-索引按实际文件构建；每个素材记录作者、许可、来源 URL 和 SHA-256。校验与功能测试记录见 [validation.json](docs/validation.json)。本仓库包含 Reactome 全部 2,571 个目录图标；NIH BioArt 仍为参考来源，未安装其素材。详细状态见 [sources.json](plugins/bio-mechanism/skills/bio-mechanism/assets/library/sources.json)。
+The index is built from actual files and records each asset's author, license, source URL, and SHA-256. Initial validation is recorded in [validation.json](docs/validation.json), with the expanded library audit in [library-update-2026-11-07.json](docs/library-update-2026-11-07.json). NIH BioArt is listed as an external reference source. Download status is recorded in [sources.json](plugins/bio-mechanism/skills/bio-mechanism/assets/library/sources.json).
 
-## 更新和扩充素材库
+Original third-party SVGs and upstream catalogs retain their source-language editor metadata, names, and provenance fields for byte-level verification. Repository documentation, plugin interfaces, generated galleries, and example prompts are in English. Search supports Chinese aliases through Unicode-escaped data in the implementation.
 
-`1.1.0` 支持多来源更新、按来源检索、内容去重和独立许可文件保留。
+## Update and expand the library
+
+Version 1.1.0 introduced multiple-source updates, source filtering, content deduplication, and independent license notices. Version 1.1.1 provides English repository documentation and interfaces.
 
 ```bash
 BIO_SKILL_DIR="./plugins/bio-mechanism/skills/bio-mechanism"
 
-# 检查 BioIcons 最新版本，按 Git 哈希只下载变化文件
+# Check the latest BioIcons commit and download files whose Git hashes changed
 python3 "$BIO_SKILL_DIR/scripts/sync_library.py" bioicons
 
-# 导入 Reactome 全部目录，复用已经下载的文件；中断后可重新运行
+# Import the complete Reactome catalog and reuse cached files after interruptions
 python3 "$BIO_SKILL_DIR/scripts/sync_library.py" reactome --workers 4
 
-# 需要重新获取现有 Reactome 图稿时，加 --refresh
+# Re-fetch existing Reactome artwork when refreshing content
 python3 "$BIO_SKILL_DIR/scripts/sync_library.py" reactome --refresh --workers 4
 
-# 按来源检索、查看统计并检查完整性
-python3 "$BIO_SKILL_DIR/scripts/bioassets.py" search '蛋白 受体' --source Reactome --limit 12
+# Filter by source and verify integrity
+python3 "$BIO_SKILL_DIR/scripts/bioassets.py" search 'protein receptor' --source Reactome --limit 12
 python3 "$BIO_SKILL_DIR/scripts/bioassets.py" stats --verify
 ```
 
-普通使用不需要联网。更新命令会访问相应公共来源；可选的 `requests` 包用于加快连接复用，没有它时使用 Python 标准库下载。不要同时运行两个命令修改同一素材库。
+Search and drawing work offline. Updates access the relevant public sources. The optional `requests` package improves connection reuse, with standard-library downloading as the fallback. Run updates sequentially for each writable library.
 
-去重按原文件 SHA-256 执行，仅合并字节完全相同的图标；重复 ID 仍可导出自己的来源和许可。更新一种来源会保留其他来源。Reactome 下载覆盖完整性和失败条目均有记录，失败下载不会计为已安装。
+Deduplication uses the original file's SHA-256. Duplicate IDs remain exportable with their own source and license records. Updating one source preserves other source catalogs. Reactome coverage and download failures are recorded explicitly, with successful downloads included in installed counts.
 
-本次扩充的核验与示例见 [扩充记录](docs/library-update-2026-11-07.md) 和 [新增素材预览](docs/reactome-preview.png)。
+The expansion audit and sample artwork are available in the [update record](docs/library-update-2026-11-07.md) and [Reactome preview](docs/reactome-preview.png).
 
-## 用于 BioRender
+## Use assets in BioRender
 
-将导出的 SVG 通过 BioRender 的 Uploads 上传；保存素材包附带的 `ATTRIBUTION.md`、`assets.json` 和 `licenses/`。SVG 上传后能否逐路径编辑取决于 BioRender 的导入行为。本插件不会连接 BioRender 账号，不提供 BioRender 专有素材或订阅权益。
+Upload exported SVGs through BioRender's Uploads panel. Keep the accompanying `ATTRIBUTION.md`, `assets.json`, and `licenses/` files. Editing individual paths depends on BioRender's import behavior. BioRender account connections, proprietary assets, and subscription features are managed separately in BioRender.
 
-## 许可与署名
+## Licensing and attribution
 
-本插件的代码和说明使用 [MIT License](LICENSE)。**素材使用各自的上游许可，不能将整个素材库视为 MIT 或公共领域。**
+Plugin code and documentation use the MIT License. Each artwork retains its upstream license. [Plugin license](LICENSE)
 
-素材包括 CC0、CC BY 3.0/4.0、CC BY-SA 3.0/4.0、MIT 和 BSD。请遵守对应条目的署名、修改说明、许可通知和其他要求。许可全文随素材保留，索引见 [index.json](plugins/bio-mechanism/skills/bio-mechanism/assets/library/index.json)。
+Artwork licenses include CC0, CC BY 3.0/4.0, CC BY-SA 3.0/4.0, MIT, and BSD. Follow each entry's attribution, modification, notice, and other license requirements. License texts are bundled with the artwork, and per-asset records are available in the [index](plugins/bio-mechanism/skills/bio-mechanism/assets/library/index.json).
 
-Servier 在本 BioIcons 快照中的部分素材为 CC BY 3.0；不会因为官网当前许可变化而自动改写历史快照的许可。示例素材的署名见 [example-sources](docs/example-sources/ATTRIBUTION.md)。
+Some Servier artwork in this BioIcons snapshot uses CC BY 3.0. Snapshot-specific license records govern those copies. Attribution for the example artwork is included in [example-sources](docs/example-sources/ATTRIBUTION.md).
 
-## 上游来源
+## Upstream resources
 
 - [BioIcons](https://bioicons.com/)
 - [Servier Medical Art](https://smart.servier.com/)
 - [Reactome Icon Library](https://reactome.org/icon-lib)
 - [DBCLS TogoTV](https://togotv.dbcls.jp/en/pics.html)
-- [Codex 插件打包说明](https://developers.openai.com/plugins/build/plugins)
+- [Codex plugin packaging documentation](https://developers.openai.com/plugins/build/plugins)

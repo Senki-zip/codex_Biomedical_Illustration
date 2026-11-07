@@ -1,7 +1,7 @@
 {
   "name": "biomedical-illustration",
   "interface": {
-    "displayName": "Biomedical Illustration 科研机制图"
+    "displayName": "Biomedical Illustration"
   },
   "plugins": [
     {

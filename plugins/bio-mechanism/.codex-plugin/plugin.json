@@ -1,21 +1,21 @@
 {
   "name": "bio-mechanism",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Local scientific SVG assets and editable mechanism diagrams",
   "author": {
     "name": "Local Research Tools"
   },
   "skills": "./skills/",
   "interface": {
-    "displayName": "科研机制图素材库",
-    "shortDescription": "离线检索科研 SVG 并组装可编辑机制图",
+    "displayName": "Biomedical Illustration",
+    "shortDescription": "Search scientific SVGs and compose editable mechanism diagrams",
     "category": "Education & Research",
     "capabilities": [
       "Read",
       "Write"
     ],
     "defaultPrompt": [
-      "使用本地科研素材绘制机制图，保留可编辑 SVG 和素材署名。"
+      "Use the scientific artwork library to find assets and create an editable mechanism diagram with attribution."
     ]
   },
   "extensions": {

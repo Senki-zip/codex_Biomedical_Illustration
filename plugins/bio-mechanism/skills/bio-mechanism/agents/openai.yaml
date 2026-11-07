@@ -1,6 +1,6 @@
 interface:
-  display_name: "科研机制图素材库"
+  display_name: "Biomedical Illustration Library"
   short_description: "Search science SVGs and build editable mechanism diagrams"
-  default_prompt: "使用 $bio-mechanism 检索本地科研素材并组装可编辑机制图，附素材来源及署名。"
+  default_prompt: "Use $bio-mechanism to find scientific artwork and compose an editable mechanism diagram with sources and attribution."
 policy:
   allow_implicit_invocation: true

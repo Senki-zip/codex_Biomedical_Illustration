@@ -20,26 +20,26 @@ XLINK = 'http://www.w3.org/1999/xlink'
 ET.register_namespace('', SVG)
 ET.register_namespace('xlink', XLINK)
 ALIASES = {
-    '细胞核': ['nucleus', 'nuclei'], '核仁': ['nucleolus'], '染色质': ['chromatin', 'nucleosome'],
-    '染色体': ['chromosome'], '核小体': ['nucleosome'], '组蛋白': ['histone'],
-    '转录因子': ['transcription', 'factor'], '转录': ['transcription', 'rna'],
-    '增强子': ['enhancer', 'dna', 'chromatin'], '启动子': ['promoter', 'dna'],
-    '核酸': ['nucleic', 'dna', 'rna'], '基因': ['gene', 'genetics', 'dna'],
-    '信使RNA': ['mrna'], '信使rna': ['mrna'], '蛋白质': ['protein'], '蛋白': ['protein'],
-    '受体': ['receptor'], '配体': ['ligand'], '细胞膜': ['membrane'],
-    '细胞器': ['intracellular'], '细胞': ['cell'], '线粒体': ['mitochondria', 'mitochondrion'],
-    '内质网': ['reticulum'], '高尔基体': ['golgi'], '溶酶体': ['lysosome'],
-    '核糖体': ['ribosome'], '细胞骨架': ['cytoskeleton', 'actin', 'microtubule'],
-    '免疫': ['immunology', 'immune'], '巨噬细胞': ['macrophage'], '树突细胞': ['dendritic'],
-    '红细胞': ['erythrocyte', 'red blood'], '血小板': ['platelet'], '中性粒细胞': ['neutrophil'],
-    '抗体': ['antibody', 'immunoglobulin'], '抗原': ['antigen'], '白细胞': ['leukocyte'],
-    'T细胞': ['t cell', 'lymphocyte'], 'B细胞': ['b cell', 'lymphocyte'],
-    '病毒': ['virus', 'viral'], '细菌': ['bacteria', 'bacterium'], '肿瘤': ['tumor', 'cancer'],
-    '凋亡': ['apoptosis'], '自噬': ['autophagy'], '囊泡': ['vesicle'], '外泌体': ['exosome', 'vesicle'],
-    '小鼠': ['mouse', 'mice'], '动物': ['animals'], '组织': ['tissue'],
-    '培养皿': ['petri', 'culture'], '移液器': ['pipette'], '试管': ['tube'],
-    '测序': ['sequencing'], '显微镜': ['microscope'], '实验': ['lab', 'apparatus'],
-    '磷酸化': ['phosphorylation'], '激酶': ['kinase'], '信号通路': ['signaling', 'receptor'],
+    '\u7ec6\u80de\u6838': ['nucleus', 'nuclei'], '\u6838\u4ec1': ['nucleolus'], '\u67d3\u8272\u8d28': ['chromatin', 'nucleosome'],
+    '\u67d3\u8272\u4f53': ['chromosome'], '\u6838\u5c0f\u4f53': ['nucleosome'], '\u7ec4\u86cb\u767d': ['histone'],
+    '\u8f6c\u5f55\u56e0\u5b50': ['transcription', 'factor'], '\u8f6c\u5f55': ['transcription', 'rna'],
+    '\u589e\u5f3a\u5b50': ['enhancer', 'dna', 'chromatin'], '\u542f\u52a8\u5b50': ['promoter', 'dna'],
+    '\u6838\u9178': ['nucleic', 'dna', 'rna'], '\u57fa\u56e0': ['gene', 'genetics', 'dna'],
+    '\u4fe1\u4f7fRNA': ['mrna'], '\u4fe1\u4f7frna': ['mrna'], '\u86cb\u767d\u8d28': ['protein'], '\u86cb\u767d': ['protein'],
+    '\u53d7\u4f53': ['receptor'], '\u914d\u4f53': ['ligand'], '\u7ec6\u80de\u819c': ['membrane'],
+    '\u7ec6\u80de\u5668': ['intracellular'], '\u7ec6\u80de': ['cell'], '\u7ebf\u7c92\u4f53': ['mitochondria', 'mitochondrion'],
+    '\u5185\u8d28\u7f51': ['reticulum'], '\u9ad8\u5c14\u57fa\u4f53': ['golgi'], '\u6eb6\u9176\u4f53': ['lysosome'],
+    '\u6838\u7cd6\u4f53': ['ribosome'], '\u7ec6\u80de\u9aa8\u67b6': ['cytoskeleton', 'actin', 'microtubule'],
+    '\u514d\u75ab': ['immunology', 'immune'], '\u5de8\u566c\u7ec6\u80de': ['macrophage'], '\u6811\u7a81\u7ec6\u80de': ['dendritic'],
+    '\u7ea2\u7ec6\u80de': ['erythrocyte', 'red blood'], '\u8840\u5c0f\u677f': ['platelet'], '\u4e2d\u6027\u7c92\u7ec6\u80de': ['neutrophil'],
+    '\u6297\u4f53': ['antibody', 'immunoglobulin'], '\u6297\u539f': ['antigen'], '\u767d\u7ec6\u80de': ['leukocyte'],
+    'T\u7ec6\u80de': ['t cell', 'lymphocyte'], 'B\u7ec6\u80de': ['b cell', 'lymphocyte'],
+    '\u75c5\u6bd2': ['virus', 'viral'], '\u7ec6\u83cc': ['bacteria', 'bacterium'], '\u80bf\u7624': ['tumor', 'cancer'],
+    '\u51cb\u4ea1': ['apoptosis'], '\u81ea\u566c': ['autophagy'], '\u56ca\u6ce1': ['vesicle'], '\u5916\u6ccc\u4f53': ['exosome', 'vesicle'],
+    '\u5c0f\u9f20': ['mouse', 'mice'], '\u52a8\u7269': ['animals'], '\u7ec4\u7ec7': ['tissue'],
+    '\u57f9\u517b\u76bf': ['petri', 'culture'], '\u79fb\u6db2\u5668': ['pipette'], '\u8bd5\u7ba1': ['tube'],
+    '\u6d4b\u5e8f': ['sequencing'], '\u663e\u5fae\u955c': ['microscope'], '\u5b9e\u9a8c': ['lab', 'apparatus'],
+    '\u78f7\u9178\u5316': ['phosphorylation'], '\u6fc0\u9176': ['kinase'], '\u4fe1\u53f7\u901a\u8def': ['signaling', 'receptor'],
 }
 
 
@@ -51,6 +51,10 @@ def load_index():
 
 def norm(s):
     return re.sub(r'[_\-]+', ' ', s).casefold()
+
+
+def asset_label(item):
+    return {'\u8840\u6d46.drawio': 'Plasma'}.get(item['name'], item['name'])
 
 
 def find(query, items, limit=20, category=None, license=None, author=None, source=None):
@@ -73,8 +77,8 @@ def find(query, items, limit=20, category=None, license=None, author=None, sourc
             continue
         if author and norm(author) not in norm(item['author']):
             continue
-        name = norm(item['name'])
-        hay = norm(' '.join(str(item.get(k, '')) for k in ('name', 'category', 'author', 'description')))
+        name = norm(asset_label(item))
+        hay = norm(asset_label(item) + ' ' + ' '.join(str(item.get(k, '')) for k in ('name', 'category', 'author', 'description')))
         hits = sum(any(term in hay for term in group) for group in groups)
         if groups and not hits:
             continue
@@ -104,7 +108,7 @@ def attribution(items, out, modification='Original artwork copied without change
              'Each artwork retains its own license. These are open-source library assets, not BioRender proprietary icons.', '']
     for item in items:
         lines.extend([
-            f"- **{item['name']}** — {item['author']} ({item.get('author_url', '')}); "
+            f"- **{asset_label(item)}** — {item['author']} ({item.get('author_url', '')}); "
             f"[{item['license']}]({item['license_url']}); [source]({item['source_url']}). ID: `{item['id']}`.",
         ])
         if item.get('publisher'):
@@ -129,18 +133,18 @@ def gallery(items, out):
     cards = []
     for item in items:
         uri = 'data:image/svg+xml;base64,' + base64.b64encode(asset_path(item).read_bytes()).decode()
-        cards.append(f'<article><img src="{uri}" alt="{html.escape(item["name"], quote=True)}"><h3>{html.escape(item["name"])}</h3>'
+        cards.append(f'<article><img src="{uri}" alt="{html.escape(asset_label(item), quote=True)}"><h3>{html.escape(asset_label(item))}</h3>'
                      f'<code>{item["id"]}</code><p>{html.escape(item["category"])} · {html.escape(item["author"])}</p>'
-                     f'<a href="{html.escape(item["source_url"], quote=True)}">来源</a> · '
+                     f'<a href="{html.escape(item["source_url"], quote=True)}">Source</a> · '
                      f'<a href="{item["license_url"]}">{item["license"]}</a></article>')
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text('<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>科研素材预览</title>'
+    out.write_text('<!doctype html><html lang="en"><meta charset="utf-8"><title>Scientific Artwork Preview</title>'
                    '<style>body{font:15px system-ui;background:#f5f7fa;color:#203246;margin:32px}'
                    'main{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}'
                    'article{background:white;border:1px solid #dce4ed;padding:18px;border-radius:12px;overflow-wrap:anywhere}'
                    'img{width:100%;height:175px;object-fit:contain}h3{font-size:16px}p{font-size:12px;color:#53657a}'
-                   'code{font-size:12px}a{color:#126c98}</style><h1>科研机制图素材库</h1>'
-                   f'<p>{len(items)} 个候选素材 · 原始 SVG · 作者与许可随条目显示</p><main>' + ''.join(cards) + '</main></html>')
+                   'code{font-size:12px}a{color:#126c98}</style><h1>Biomedical Illustration Library</h1>'
+                   f'<p>{len(items)} candidate assets · Original SVGs · Authors and licenses shown per asset</p><main>' + ''.join(cards) + '</main></html>')
 
 
 def elem(tag, attrs=None, text=None):
@@ -346,7 +350,7 @@ def main():
             print(json.dumps(matches, ensure_ascii=False, indent=2))
         else:
             for x in matches:
-                print(f"{x['id']}\t{x['name']}\t{x['category']}\t{x['author']}\t{x['license']}")
+                print(f"{x['id']}\t{asset_label(x)}\t{x['category']}\t{x['author']}\t{x['license']}")
             print(f'{len(matches)} result(s)', file=sys.stderr)
     elif args.command == 'export':
         lookup = {x['id']: x for x in items if x.get('svg_valid', True)}
@@ -356,7 +360,7 @@ def main():
         selected = [lookup[i] for i in dict.fromkeys(args.ids)]
         args.out.mkdir(parents=True, exist_ok=True)
         for x in selected:
-            filename = x['id'] + '-' + re.sub(r'[^\w.-]+', '_', x['name']) + '.svg'
+            filename = x['id'] + '-' + re.sub(r'[^\w.-]+', '_', asset_label(x)) + '.svg'
             shutil.copyfile(asset_path(x), args.out / filename)
         attribution(selected, args.out)
         print(f'Exported {len(selected)} SVGs to {args.out.resolve()}')

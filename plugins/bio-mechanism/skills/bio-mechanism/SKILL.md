@@ -3,7 +3,7 @@ name: bio-mechanism
 description: Search downloaded scientific SVG artwork in Chinese or English, preview and export assets for BioRender, and compose editable biological mechanism diagrams with source and license records. Use for biological illustrations, cell or signaling mechanisms, and requests for local free science icons. Do not use for statistical charts or imply access to the user's BioRender account.
 ---
 
-# 科研机制图素材库
+# Biomedical Illustration Library
 
 This skill ships with offline BioIcons and Reactome SVG libraries, original license texts and designer/publisher attribution. Source status is recorded in `assets/library/sources.json`; distinguish downloaded assets from external reference links. Run `stats` for current per-source and deduplicated usable counts.
 
@@ -13,9 +13,9 @@ Resolve all script paths relative to this `SKILL.md`, including when the plugin 
 
 ```bash
 python3 <skill-dir>/scripts/bioassets.py stats
-python3 <skill-dir>/scripts/bioassets.py search '细胞核 DNA 转录' --limit 16 --gallery <output-dir>/candidates.html
+python3 <skill-dir>/scripts/bioassets.py search 'nucleus DNA transcription' --limit 16 --gallery <output-dir>/candidates.html
 python3 <skill-dir>/scripts/bioassets.py search 'receptor' --author Servier --limit 12 --json
-python3 <skill-dir>/scripts/bioassets.py search '蛋白 受体' --source Reactome --limit 12
+python3 <skill-dir>/scripts/bioassets.py search 'protein receptor' --source Reactome --limit 12
 ```
 
 Chinese terms expand to related English asset names; search results are candidates, not a claim of exact biological identity. For a precise molecule, visually inspect the source SVG or a rendered contact sheet before assigning that label. Prefer consistent authors/styles in a single panel. Use `--license cc-0` to restrict to CC0 when requested; do not call every icon public domain.

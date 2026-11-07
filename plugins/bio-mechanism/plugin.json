@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "bio-mechanism",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Offline scientific SVG asset library with Chinese/English search, visual previews, BioRender import bundles, and editable mechanism diagrams.",
   "author": {
     "name": "Local Research Tools"
@@ -17,9 +17,9 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "科研机制图素材库",
-        "shortDescription": "离线检索科研 SVG，导出 BioRender 素材并组装可编辑机制图",
-        "longDescription": "本机开放科研素材库，支持中英文关键词检索、缩略图预览、带来源许可的素材导出和可编辑 SVG 机制图组装。无需 API Key；不连接 BioRender 账号。",
+        "displayName": "Biomedical Illustration",
+        "shortDescription": "Search scientific SVGs and compose editable mechanism diagrams",
+        "longDescription": "An offline scientific artwork library with multilingual search, asset previews, provenance-aware exports, and editable SVG mechanism composition.",
         "developerName": "Local Research Tools",
         "category": "Education & Research",
         "capabilities": [
@@ -27,7 +27,7 @@
           "Write"
         ],
         "defaultPrompt": [
-          "使用本地科研机制图素材库，为我的机制图检索素材并生成可编辑 SVG。"
+          "Use the scientific artwork library to find assets and create an editable mechanism diagram with attribution."
         ]
       },
       "onboardingSkill": "./skills/bio-mechanism-guide/SKILL.md"
